@@ -11,7 +11,7 @@ const PROMPT = require('readline-sync');
 
 // ----Above this line is section 1, comment header block & pragmas/library calls----
 
-let p1, p2, p1score, p2score, winner, roll;
+let p1, p2, p1score, p2score, winner, roll, turn;
 const  MAX_SCORE = 500;
 
 // ----Above this line is section 2, global variable declarations & global constant declarations/assignments----
@@ -19,6 +19,7 @@ const  MAX_SCORE = 500;
 function main() {
     getPlayerInfo();
     rollDice();
+    turnChanger();
     scoreTurn();
     scoreGame();
     printWinner();
@@ -52,14 +53,29 @@ function getPlayerInfo(){
             p1 = 0;
             }
     }while (p1 === 0);
+
+    turn = 0;
+}
+
+function turnChanger(){
+    if (turn = 0){
+        turn = 1;
+    }else {
+        turn = 0;
+    }
 }
 
 function rollDice(){
+
     roll = Math.floor(Math.random() * 6) + 1;
 }
 
 function scoreTurn(){
-    p1score = p1score + roll;
+    if (turn === 0){
+        p1score = p1score + roll;
+    }else {
+        p2score = p2score + roll;
+    }
 }
 // ----Above this line is section 4, mutator & worker/utility methods----
 
