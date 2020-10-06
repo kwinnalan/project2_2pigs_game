@@ -79,15 +79,19 @@ function rollDice(){
 
 function scoreTurn(){
     if (turn === 0){
-        if (rolld1 !== 1 && rolld2 !== 1){
+        if (rolld1 !== 1 && rolld2 !== 1 && rolld1 !== rolld2){
             p1score = p1score + roll;
         }else if (rolld1 === 1 && rolld2 === 1){
             p1score = 0;
+        }else if (rolld1 === rolld2){
+            p1score = p1score + (roll * 2);
         }
-    } else if (rolld1 !==1 && rolld2 !== 1) {
+    } else if (rolld1 !==1 && rolld2 !== 1 && rolld1 !== rolld2) {
         p2score = p2score + roll;
     } else if (rolld1 === 1 && rolld2 === 1){
         p2score = 0;
+    }else if (rolld1 === rolld2){
+        p2score = p2score + (roll * 2);
     }
     console.log("p1score="+p1score+"   p2score="+p2score);
 }
