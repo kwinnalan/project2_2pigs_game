@@ -39,12 +39,13 @@ function getPlayerInfo(){
     p2name = PROMPT.question(`\nNext player please enter you'r name: `);
 
     do {
+        console.log("\nWe will roll to see who goes first. Highest will go first. Good Luck!\n");
         console.log(p1name + " roll first");
         p1roll = Math.floor(Math.random() * 6) + 1;
-        console.log(p1roll+"=p1roll");
+        console.log(p1roll + " = " + " roll\n");
         console.log(p2name + " roll second");
         p2roll = Math.floor(Math.random() * 6) + 1;
-        console.log(p2roll+"=p2roll");
+        console.log(p2roll + " = " + " roll\n");
         if (p1roll > p2roll){
             p1 = p1name;
             p2 = p2name;
@@ -52,10 +53,12 @@ function getPlayerInfo(){
             p1 = p2name;
             p2 = p1name;
             }else{
-            console.log("It was a tie lets try again!");
+            console.log("It was a tie lets try again!\n\n");
             p1 = 0;
             }
-        console.log("p1="+p1+" p2="+p2);
+        if (p1 !== 0) {
+            console.log("The player going first will be " + p1 + " and second will be " + p2 + "\n");
+        }
     }while (p1 === 0);
 
     turn = 0;
@@ -67,14 +70,20 @@ function turnChanger() {
     } else {
         turn = 0;
     }
-    console.log("..*turn*..." + turn);
+    console.log("\n..*turn*..." + turn);
+    if (turn === 0){
+        console.log("..." + p1 + "'s turn");
+    } else{
+        console.log("..." + p2 + "'s turn");
+    }
+
 }
 
 function rollDice(){
     rolld1 = Math.floor(Math.random() * 6) + 1;
     rolld2 = Math.floor(Math.random() * 6) + 1;
     roll = rolld1 + rolld2;
-    console.log('..roll...-'+roll+'  rolld1-'+rolld1+'  rolld2-'+rolld2);
+    console.log('..roll...' + roll + '  first dice = '+rolld1+'  second dice= '+rolld2);
 }
 
 function scoreTurn(){
@@ -93,7 +102,7 @@ function scoreTurn(){
     }else if (rolld1 === rolld2){
         p2score = p2score + (roll * 2);
     }
-    console.log("p1score="+p1score+"   p2score="+p2score);
+    console.log("Score: " + p1 + " " + p1score + "   " + p2 + " " + p2score);
 }
 
 function rollAgain(){
@@ -101,7 +110,7 @@ function rollAgain(){
         console.log('roll again');
     }else{
         turnChanger();
-        console.log('not roll again *****turn*****'+ roll);
+        console.log('\nChanged*****turn*****->:'+ roll + " " + rolld1 + " " + rolld2 + '\n' );
     }
 }
 function scoreGame(){
