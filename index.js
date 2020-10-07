@@ -16,6 +16,12 @@ const  MAX_SCORE = 500;
 
 // ----Above this line is section 2, global variable declarations & global constant declarations/assignments----
 
+/**
+ * @method
+ * @desc The dispatch method for our program
+ * @returns {null}
+ */
+
 function main() {
     getPlayerInfo();
     do {
@@ -30,6 +36,12 @@ function main() {
 main();
 
 // ----Above this line is section 3, dispatch method & call to dispatch method----
+
+/**
+ * @method
+ * @desc p1 and p2 mutator
+ * @returns {null}
+ */
 
 function getPlayerInfo(){
     let p2name, p1roll, p2roll, p1name;
@@ -64,6 +76,12 @@ function getPlayerInfo(){
     turn = 0;
 }
 
+/**
+ * @method
+ * @desc turn mutator
+ * @returns {null}
+ */
+
 function turnChanger() {
     if (turn === 0) {
         turn = 1;
@@ -79,12 +97,24 @@ function turnChanger() {
 
 }
 
+/**
+ * @method
+ * @desc roll, rolld1 and rolld2 mutator
+ * @returns {null}
+ */
+
 function rollDice(){
     rolld1 = Math.floor(Math.random() * 6) + 1;
     rolld2 = Math.floor(Math.random() * 6) + 1;
     roll = rolld1 + rolld2;
     console.log('..roll...' + roll + '  first dice = '+rolld1+'  second dice= '+rolld2);
 }
+
+/**
+ * @method
+ * @desc p1score and p2score mutator
+ * @returns {null}
+ */
 
 function scoreTurn(){
     if (turn === 0){
@@ -95,7 +125,7 @@ function scoreTurn(){
         }else if (rolld1 === rolld2){
             p1score = p1score + (roll * 2);
         }
-    } else if (rolld1 !==1 && rolld2 !== 1 && rolld1 !== rolld2) {
+    } else if (rolld1 !== 1 && rolld2 !== 1 && rolld1 !== rolld2) {
         p2score = p2score + roll;
     } else if (rolld1 === 1 && rolld2 === 1){
         p2score = 0;
@@ -105,6 +135,12 @@ function scoreTurn(){
     console.log("Score: " + p1 + " " + p1score + "   " + p2 + " " + p2score);
 }
 
+/**
+ * @method
+ * @desc Utility: calls turnChanger
+ * @returns {null}
+ */
+
 function rollAgain(){
     if (rolld1 !== 1 && rolld2 !== 1){
         console.log('roll again');
@@ -113,17 +149,31 @@ function rollAgain(){
         console.log('\nChanged*****turn*****->:'+ roll + " " + rolld1 + " " + rolld2 + '\n' );
     }
 }
-function scoreGame(){
-console.log(p1 + ' scored: ' + p1score +"  "+ p2 + ' scored: '+p2score);
-}
 
-function printWinner(){
+/**
+ * @method
+ * @desc winner mutator
+ * @returns {null}
+ */
+
+function scoreGame(){
     if (p1score>p2score){
         winner = p1;
     } else{
         winner = p2;
     }
-console.log('the winner is '+ winner);
 }
+
+/**
+ * @method
+ * @desc Utility: outputs results
+ * @returns {null}
+ */
+
+function printWinner(){
+    console.log(p1 + ' scored: ' + p1score +"  "+ p2 + ' scored: '+p2score);
+    console.log('the winner is '+ winner);
+}
+
 // ----Above this line is section 4, mutator & worker/utility methods----
 
